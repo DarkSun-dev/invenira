@@ -27,14 +27,14 @@ app.get("/", (req, res) => {
   res.send("index.html");
 });
 
-app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404))
+app.all('*', (req, res) => {
+  res.redirect(301, '/');
 })
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`App running on port ${port}...`);
-});
+})
 
 
 
